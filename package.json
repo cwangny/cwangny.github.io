@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://cwangny.github.io",
+  "homepage": "https://cwangny.github.io/my-portfolio/"
+,
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
