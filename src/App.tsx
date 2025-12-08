@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/NavBar'
 import MainContent from './components/MainContent'
+import NotFound from './components/NotFound'
 import Silk from './components/Reactbits/Silk';
 
 function Blog() {
@@ -43,6 +44,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainContent />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </div>

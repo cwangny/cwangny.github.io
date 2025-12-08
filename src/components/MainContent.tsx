@@ -6,7 +6,7 @@ export default function MainContent() {
   return (
     <div className="flex flex-col justify-center items-center px-4 sm:px-8 pt-8 sm:pt-16 pb-8">
       <TiltedCard
-        imageSrc="/images/tellos.png"
+        imageSrc="./images/tellos.png"
         altText="Tellos AI"
         captionText="Tellos AI"
         containerHeight="auto"
