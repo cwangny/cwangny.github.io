@@ -61,10 +61,16 @@ export default function Navbar() {
   `}
       >
         <div className="px-4 py-3 flex gap-6 justify-center">
-          <Link to="/" className="transition-opacity hover:opacity-80 active:opacity-60 cursor-pointer">
+          <Link 
+            to="/" 
+            className="px-4 py-2 rounded-full transition-all duration-200 hover:opacity-80 active:bg-white/20 active:scale-95 cursor-pointer"
+          >
             Projects
           </Link>
-          <Link to="/blog" className="transition-opacity hover:opacity-80 active:opacity-60 cursor-pointer">
+          <Link 
+            to="/blog" 
+            className="px-4 py-2 rounded-full transition-all duration-200 hover:opacity-80 active:bg-white/20 active:scale-95 cursor-pointer"
+          >
             Blog
           </Link>
         </div>

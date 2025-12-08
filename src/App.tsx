@@ -3,42 +3,47 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/NavBar'
 import MainContent from './components/MainContent'
 import NotFound from './components/NotFound'
+import Blog from './components/Blog';
 import Silk from './components/Reactbits/Silk';
-
-function Blog() {
-  return (
-    <div className="flex flex-col justify-center items-center px-4 sm:px-8 pt-8 sm:pt-16 pb-8">
-      <h1 className="text-4xl font-bold mb-8">Blog</h1>
-      <p className="text-lg text-center">Blog posts coming soon...</p>
-    </div>
-  );
-}
+import CircularText from './components/Reactbits/CirculatText';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const [isDark, setIsDark] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const checkDarkMode = () => {
       setIsDark(document.documentElement.classList.contains("dark"));
     };
-    
+
     checkDarkMode();
-    
+
     const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, { 
-      attributes: true, 
-      attributeFilter: ['class'] 
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
     });
-    
+
     return () => observer.disconnect();
   }, []);
 
-  const showSilk = location.pathname !== '/blog';
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    setTimeout(() => setShowContent(true), 100);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} duration={500} />;
+  }
 
   return (
     <div className="relative">
-      <div className="relative z-10">
+      <div className={`relative z-10 transition-all duration-1000 ease-out ${
+        showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}>
         <div className="max-w-[1800px] mx-auto p-4">
           <Navbar />
           <Routes>
@@ -49,17 +54,17 @@ function App() {
         </div>
       </div>
 
-      {showSilk && (
-        <div className="fixed inset-0 w-screen h-screen">
-          <Silk
-            speed={4}
-            scale={1}
-            color={isDark ? "#444873" : "#ffffff"}
-            noiseIntensity={1}
-            rotation={25}
-          />
-        </div>
-      )}
+      <div className={`fixed inset-0 w-screen h-screen transition-opacity duration-1200 ease-out ${
+        showContent ? 'opacity-100' : 'opacity-0'
+      }`}>
+        <Silk
+          speed={5}
+          scale={1}
+          color={isDark ? "#1A1A1A" : "#FAFAFA"}
+          noiseIntensity={0.75}
+          rotation={25}
+        />
+      </div>
     </div>
   );
 }

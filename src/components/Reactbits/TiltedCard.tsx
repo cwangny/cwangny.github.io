@@ -55,6 +55,7 @@ export default function TiltedCard({
 	});
 
 	const [lastY, setLastY] = useState(0);
+	const [isMobileZoomed, setIsMobileZoomed] = useState(false);
 
 	function handleMouse(e: React.MouseEvent<HTMLElement>) {
 		if (!ref.current) return;
@@ -88,6 +89,12 @@ export default function TiltedCard({
 		rotateX.set(0);
 		rotateY.set(0);
 		rotateFigcaption.set(0);
+		setIsMobileZoomed(false);
+	}
+
+	function handleMobileClick() {
+		setIsMobileZoomed(!isMobileZoomed);
+		scale.set(isMobileZoomed ? 1 : scaleOnHover);
 	}
 
 	return (
@@ -101,6 +108,7 @@ export default function TiltedCard({
 			onMouseMove={handleMouse}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
+			onClick={handleMobileClick}
 		>
 			{showMobileWarning && (
 				<div className="absolute top-4 text-center text-sm block sm:hidden px-4">
