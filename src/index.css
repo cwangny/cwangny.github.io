@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light mode theme */
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  color-scheme: light;
+}
+
+/* Dark mode theme */
+.dark {
+  --bg: #0c0c0c;
+  --text: #f2f2f2;
+  color-scheme: dark;
+}
+
+/* Apply the background + text globally */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* GradientText aniamtion */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient 2s linear infinite;
+}
+
+
+/* ShinyText animation  */
+@keyframes shine {
+  0% { background-position: 100% 50%; }
+  100% { background-position: -100% 50%; }
+}
+
+.animate-shine {
+  animation: shine 5s linear infinite;
+}
