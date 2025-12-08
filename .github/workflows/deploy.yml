@@ -3,8 +3,8 @@ name: Deploy Vite React App
 on:
   push:
     branches:
-      - master   # 👈 Deploy when pushing to master
-  workflow_dispatch: # Allow manual deploys from Actions tab
+      - master
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -34,10 +34,13 @@ jobs:
       - name: Build Vite app
         run: npm run build
 
+      - name: Add CNAME file
+        run: echo "misoncaamwang.com" > dist/CNAME 
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist   # 👈 Vite output folder
+          path: ./dist
 
   deploy:
     needs: build
@@ -45,6 +48,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
