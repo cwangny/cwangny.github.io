@@ -2,14 +2,14 @@
   "name": "my-portfolio",
   "private": true,
   "version": "0.0.0",
-  "type": "module"
-,
+  "type": "module",
+  "homepage": "https://cwangny.github.io/",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@react-three/fiber": "^9.4.2",
