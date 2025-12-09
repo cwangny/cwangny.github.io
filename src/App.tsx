@@ -30,6 +30,23 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const img = new Image();
+    img.src = "/images/tellos.webp";
+
+    img.onload = () => {
+      // finish loading ONLY when img is ready
+      setIsLoading(false);
+      setTimeout(() => setShowContent(true), 100);
+    };
+
+    img.onerror = () => {
+      console.warn("Image failed to load — continuing anyway");
+      setIsLoading(false);
+      setTimeout(() => setShowContent(true), 100);
+    };
+  }, []);
+
   const handleLoadingComplete = () => {
     setIsLoading(false);
     setTimeout(() => setShowContent(true), 100);
@@ -41,9 +58,8 @@ function App() {
 
   return (
     <div className="relative">
-      <div className={`relative z-10 transition-all duration-1000 ease-out ${
-        showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}>
+      <div className={`relative z-10 transition-all duration-1000 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
         <div className="max-w-[1800px] mx-auto p-4">
           <Navbar />
           <Routes>
@@ -54,9 +70,8 @@ function App() {
         </div>
       </div>
 
-      <div className={`fixed inset-0 w-screen h-screen transition-opacity duration-1200 ease-out ${
-        showContent ? 'opacity-100' : 'opacity-0'
-      }`}>
+      <div className={`fixed inset-0 w-screen h-screen transition-opacity duration-1200 ease-out ${showContent ? 'opacity-100' : 'opacity-0'
+        }`}>
         <Silk
           speed={5}
           scale={1}
