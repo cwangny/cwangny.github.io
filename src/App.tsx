@@ -31,19 +31,26 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const startTime = Date.now();
+    const minLoadingTime = 500; // Minimum 500ms loading time
+    
     const img = new Image();
     img.src = "/images/tellos.webp";
 
-    img.onload = () => {
-      // finish loading ONLY when img is ready
-      setIsLoading(false);
-      setTimeout(() => setShowContent(true), 100);
+    const finishLoading = () => {
+      const elapsedTime = Date.now() - startTime;
+      const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
+      
+      setTimeout(() => {
+        setIsLoading(false);
+        setTimeout(() => setShowContent(true), 100);
+      }, remainingTime);
     };
 
+    img.onload = finishLoading;
     img.onerror = () => {
       console.warn("Image failed to load — continuing anyway");
-      setIsLoading(false);
-      setTimeout(() => setShowContent(true), 100);
+      finishLoading();
     };
   }, []);
 
