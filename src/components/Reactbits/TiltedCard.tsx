@@ -17,6 +17,7 @@ interface TiltedCardProps {
 	overlayContent?: React.ReactNode;
 	displayOverlayContent?: boolean;
 	className?: string;
+	onOverlayClick?: () => void;
 }
 
 const springValues: SpringOptions = {
@@ -39,7 +40,8 @@ export default function TiltedCard({
 	showTooltip = true,
 	overlayContent = null,
 	displayOverlayContent = false,
-	className
+	className,
+	onOverlayClick
 }: TiltedCardProps) {
 	const ref = useRef<HTMLElement>(null);
 	const x = useMotionValue(0);
@@ -137,7 +139,7 @@ export default function TiltedCard({
 					>
 						<div 
 							className="group px-4 py-3 sm:px-6 sm:pt-4 sm:pb-3 rounded-2xl sm:rounded-3xl border-white/20 bg-white/10 backdrop-blur-md shadow-2xl cursor-pointer pointer-events-auto text-sm sm:text-base"
-							onClick={() => window.open('https://iamtellos.com', '_blank')}
+							onClick={onOverlayClick || (() => window.open('https://iamtellos.com', '_blank'))}
 						>
 							{overlayContent}
 						</div>

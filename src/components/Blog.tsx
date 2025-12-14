@@ -4,7 +4,7 @@ export default function Blog() {
   return (
     <div className="flex flex-col justify-center items-center px-4 sm:px-8 pt-8 sm:pt-16 pb-8">
       <TextType 
-        text="My conjectures, explanations and thoughts..."
+        text="I am human; I am fallible."
         typingSpeed={50}
         showCursor={true}
         cursorCharacter="|"

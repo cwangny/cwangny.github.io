@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import ReactGA from 'react-ga4';
 import Navbar from './components/NavBar'
 import MainContent from './components/MainContent'
 import NotFound from './components/NotFound'
@@ -13,6 +14,17 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
   const location = useLocation();
+
+  // Track page views only in production.
+  useEffect(() => {
+    if (import.meta.env.VITE_GA_MEASUREMENT_ID && import.meta.env.PROD) {
+      ReactGA.send({ 
+        hitType: "pageview", 
+        page: location.pathname,
+        title: document.title
+      });
+    }
+  }, [location]);
 
   useEffect(() => {
     const checkDarkMode = () => {
@@ -33,14 +45,14 @@ function App() {
   useEffect(() => {
     const startTime = Date.now();
     const minLoadingTime = 500; // Minimum 500ms loading time
-    
+
     const img = new Image();
     img.src = "/images/tellos.webp";
 
     const finishLoading = () => {
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
-      
+
       setTimeout(() => {
         setIsLoading(false);
         setTimeout(() => setShowContent(true), 100);

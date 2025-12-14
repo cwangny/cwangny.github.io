@@ -1,8 +1,22 @@
 import TiltedCard from "./Reactbits/TiltedCard";
 import AnimatedGradientText from "./AnimatedGradientText";
 import ShinyText from "./Reactbits/ShinyText";
+import ReactGA from 'react-ga4';
 
 export default function MainContent() {
+  const handleTellosClick = () => {
+    // Track the click event
+    if (import.meta.env.VITE_GA_MEASUREMENT_ID && import.meta.env.PROD) {
+      ReactGA.event({
+        category: 'User Interaction',
+        action: 'Click',
+        label: 'Tellos AI Button'
+      });
+    }
+    
+    window.open('https://iamtellos.com', '_blank');
+  };
+
   return (
     <div className="flex flex-col justify-center items-center px-4 sm:px-8 pt-8 sm:pt-16 pb-8">
       <TiltedCard
@@ -25,6 +39,7 @@ export default function MainContent() {
             </AnimatedGradientText>
           </div>
         }
+        onOverlayClick={handleTellosClick}
       />
 
       <ShinyText 
