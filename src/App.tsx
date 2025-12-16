@@ -5,6 +5,7 @@ import Navbar from './components/NavBar'
 import MainContent from './components/MainContent'
 import NotFound from './components/NotFound'
 import Blog from './components/Blog';
+import BlogPost from './components/BlogPost';
 import Silk from './components/Reactbits/Silk';
 import CircularText from './components/Reactbits/CirculatText';
 import LoadingScreen from './components/LoadingScreen';
@@ -84,6 +85,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainContent />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
