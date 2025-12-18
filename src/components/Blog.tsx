@@ -7,7 +7,7 @@ const blogPosts = [
     title: "On Science",
     excerpt: "Explaining what may be humanity's most important creation.",
     date: "Dec 15, 2024",
-    readTime: "8 min read",
+    readTime: "5 min read",
     tags: ["Science", "Philosophy", "Epistemology"],
   }
 ];
