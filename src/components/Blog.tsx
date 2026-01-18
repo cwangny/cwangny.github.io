@@ -18,7 +18,7 @@ export default function Blog() {
       <div className="w-full max-w-4xl space-y-12">
         <div className="text-center">
           <TextType
-            text="I am human; I am fallible."
+            text="Nullius in verba"
             typingSpeed={50}
             showCursor={true}
             cursorCharacter="|"
