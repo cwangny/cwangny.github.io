@@ -18,6 +18,7 @@ interface TiltedCardProps {
 	displayOverlayContent?: boolean;
 	className?: string;
 	onOverlayClick?: () => void;
+	overlayHref?: string;
 }
 
 const springValues: SpringOptions = {
@@ -32,7 +33,6 @@ export default function TiltedCard({
 	captionText = '',
 	containerHeight = '300px',
 	containerWidth = '100%',
-	imageHeight = '300px',
 	imageWidth = '300px',
 	scaleOnHover = 1.1,
 	rotateAmplitude = 14,
@@ -41,7 +41,8 @@ export default function TiltedCard({
 	overlayContent = null,
 	displayOverlayContent = false,
 	className,
-	onOverlayClick
+	onOverlayClick,
+	overlayHref
 }: TiltedCardProps) {
 	const ref = useRef<HTMLElement>(null);
 	const x = useMotionValue(0);
@@ -99,10 +100,21 @@ export default function TiltedCard({
 		scale.set(isMobileZoomed ? 1 : scaleOnHover);
 	}
 
+	function handleOverlayClick() {
+		if (onOverlayClick) {
+			onOverlayClick();
+			return;
+		}
+
+		if (overlayHref) {
+			window.open(overlayHref, '_blank');
+		}
+	}
+
 	return (
 		<figure
 			ref={ref}
-			className={`relative w-full h-full perspective-midrange flex flex-col items-center justify-center ${className || ''}`}
+			className={`video-card relative w-full h-full perspective-midrange flex flex-col items-center justify-center ${className || ''}`}
 			style={{
 				height: containerHeight,
 				width: containerWidth
@@ -138,8 +150,8 @@ export default function TiltedCard({
 						className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none will-change-transform"
 					>
 						<div 
-							className="group px-4 py-3 sm:px-6 sm:pt-4 sm:pb-3 rounded-2xl sm:rounded-3xl border-white/20 bg-white/10 backdrop-blur-md shadow-2xl cursor-pointer pointer-events-auto text-sm sm:text-base"
-							onClick={onOverlayClick || (() => window.open('https://iamtellos.com', '_blank'))}
+							className="group px-4 py-3 sm:px-6 sm:pt-4 sm:pb-3 rounded-2xl sm:rounded-3xl border-white/20 bg-[#232323] backdrop-blur-md shadow-2xl cursor-pointer pointer-events-auto text-sm sm:text-base"
+							onClick={handleOverlayClick}
 						>
 							{overlayContent}
 						</div>
