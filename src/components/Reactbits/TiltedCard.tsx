@@ -144,13 +144,15 @@ export default function TiltedCard({
 					alt={altText}
 					className="absolute top-0 left-0 w-full h-full object-cover rounded-[15px] will-change-transform transform-[translateZ(0)]"
 				/>
+				<div className="absolute inset-0 rounded-[15px] pointer-events-none shadow-[inset_8px_8px_18px_rgba(0,0,0,0.28),inset_-8px_-8px_30px_rgba(255,255,255,0.075)]" />
+				<div className="absolute inset-0 rounded-[15px] pointer-events-none bg-[radial-gradient(120%_95%_at_50%_45%,rgba(0,0,0,0)_38%,rgba(0,0,0,0.3)_100%),linear-gradient(145deg,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0)_36%,rgba(0,0,0,0.22)_100%)]" />
 
 				{displayOverlayContent && overlayContent && (
 					<motion.div
 						className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none will-change-transform"
 					>
 						<div 
-							className="group px-4 py-3 sm:px-6 sm:pt-4 sm:pb-3 rounded-2xl sm:rounded-3xl border-white/20 bg-[#232323] backdrop-blur-md shadow-2xl cursor-pointer pointer-events-auto text-sm sm:text-base"
+							className="group px-4 py-3 sm:px-6 sm:pt-4 sm:pb-3 rounded-2xl sm:rounded-3xl border-white/20 bg-[#232323]/90 backdrop-blur-xl shadow-2xl cursor-pointer pointer-events-auto text-sm sm:text-base"
 							onClick={handleOverlayClick}
 						>
 							{overlayContent}
