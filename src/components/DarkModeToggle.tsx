@@ -4,7 +4,9 @@ interface DarkModeToggleProps {
   className?: string;
 }
 
-export default function DarkModeToggle({ className = "" }: DarkModeToggleProps) {
+export default function DarkModeToggle({
+  className = "",
+}: DarkModeToggleProps) {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

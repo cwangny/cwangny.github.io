@@ -9,7 +9,7 @@ const blogPosts = [
     date: "Dec 15, 2024",
     readTime: "5 min read",
     tags: ["Science", "Philosophy", "Epistemology"],
-  }
+  },
 ];
 
 export default function Blog() {

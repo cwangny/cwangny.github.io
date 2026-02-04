@@ -1,13 +1,13 @@
-import { useParams } from 'react-router-dom';
-import AnimatedGradientText from './AnimatedGradientText';
-import NotFound from './NotFound';
+import { useParams } from "react-router-dom";
+import AnimatedGradientText from "./AnimatedGradientText";
+import NotFound from "./NotFound";
 
 const dummy = `<p>I remember seeing the famous Blue Marble photograph in my science textbook when I was six or seven years old. I was told that the Earth is round—that it is a globe. There was even a globe standing right there in the classroom. Yet at that age, I couldn't quite comprehend how the Earth could possibly be spherical, even while looking at a real image of it. From where I stood, the ground beneath my feet felt flat, so I assumed the Earth must be flat too, with us standing on top of it. I remember thinking that people stood at the North Pole, and I asked my teacher how people at the South Pole didn't fall off. The idea of a spherical planet felt abstract and deeply unintuitive.</p>
       <br/>
       <p>Looking back, I think that confusion—and the desire to resolve it—was when I first fell in love with science. I don't recall the exact moment, but through pure curiosity, and eventually learning about gravity, I began to understand how the Earth could be a sphere and why everything falls toward its center. Throughout primary school and high school, I read textbooks and watched science videos. But at that age, learning science is mostly about memorizing facts and getting good marks. You don't stop to ask what science actually is. You just shut up and calculate. And so, I carried a persistent feeling that I didn't truly understand science, and that there was something deeper I was missing.</p>
       <br/>
       <p>As Richard Feynman said, “If you can't explain something in simple terms, you don't understand it well enough.” That thought lingered in the back of my mind, because I couldn't really explain what science was. As luck would have it, I came across Naval Ravikant, who introduced me to the works of David Deutsch and Brett Hall. That was when things finally clicked. After reading The Beginning of Infinity and listening to numerous podcasts by Brett Hall, I felt—perhaps for the first time—that I understood what science actually is. Deutsch beautifully and elegantly explains the theory of science and epistemology. This is my attempt to explain it.</p>
-      <br/>`
+      <br/>`;
 
 const blogContent = {
   "1": {
@@ -47,7 +47,7 @@ const blogContent = {
       <p>A natural question follows. Why listen to David Deutsch at all? How do we know he is correct? The answer, fittingly, is not because Deutsch is an authority, but because his explanation of science itself is hard to vary. Most importantly, his view does not ask to be accepted on trust. It invites criticism. If a better explanation of how knowledge grows were discovered, it would replace his. Until then, his framework endures for the same reason good scientific theories do. It explains more and breaks less easily than the alternatives.</p>
       <br/>
       <p>Lastly, in an age where, through the internet, currently known knowledge is effectively free, I'm grateful for David Deutsch's explanations and Brett Hall's podcasts, whose depth has helped me seek a deeper understanding of science, reality, and truth itself.</p>
-    `
+    `,
   },
 };
 
@@ -63,11 +63,10 @@ export default function BlogPost() {
   return (
     <div className="flex flex-col justify-center items-center px-4 sm:px-8 pt-8 sm:pt-16 pb-8">
       <div className="w-full max-w-3xl space-y-8">
-
         <article className="space-y-6">
           <header className="space-y-4">
             <h1 className="text-3xl sm:text-4xl font-bold">
-              <AnimatedGradientText colors={['#40ffaa', '#4079ff', '#40ffaa']}>
+              <AnimatedGradientText colors={["#40ffaa", "#4079ff", "#40ffaa"]}>
                 {post.title}
               </AnimatedGradientText>
             </h1>

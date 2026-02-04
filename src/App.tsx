@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import ReactGA from 'react-ga4';
-import Navbar from './components/NavBar'
-import MainContent from './components/MainContent'
-import NotFound from './components/NotFound'
-import Blog from './components/Blog';
-import BlogPost from './components/BlogPost';
-import Silk from './components/Reactbits/Silk';
-import CircularText from './components/Reactbits/CirculatText';
-import LoadingScreen from './components/LoadingScreen';
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import ReactGA from "react-ga4";
+import Navbar from "./components/NavBar";
+import MainContent from "./components/MainContent";
+import NotFound from "./components/NotFound";
+import Blog from "./components/Blog";
+import BlogPost from "./components/BlogPost";
+import Silk from "./components/Reactbits/Silk";
+import CircularText from "./components/Reactbits/CirculatText";
+import LoadingScreen from "./components/LoadingScreen";
 
 function App() {
   const [isDark, setIsDark] = useState(true);
@@ -19,10 +19,10 @@ function App() {
   // Track page views only in production.
   useEffect(() => {
     if (import.meta.env.VITE_GA_MEASUREMENT_ID && import.meta.env.PROD) {
-      ReactGA.send({ 
-        hitType: "pageview", 
+      ReactGA.send({
+        hitType: "pageview",
         page: location.pathname,
-        title: document.title
+        title: document.title,
       });
     }
   }, [location]);
@@ -37,7 +37,7 @@ function App() {
     const observer = new MutationObserver(checkDarkMode);
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class']
+      attributeFilter: ["class"],
     });
 
     return () => observer.disconnect();
@@ -73,13 +73,18 @@ function App() {
   };
 
   if (isLoading) {
-    return <LoadingScreen onLoadingComplete={handleLoadingComplete} duration={500} />;
+    return (
+      <LoadingScreen onLoadingComplete={handleLoadingComplete} duration={500} />
+    );
   }
 
   return (
     <div className="relative">
-      <div className={`relative z-10 transition-all duration-1000 ease-out ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
+      <div
+        className={`relative z-10 transition-all duration-1000 ease-out ${
+          showContent ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
         <div className="max-w-[1800px] mx-auto p-4">
           <Navbar />
           <Routes>
@@ -91,8 +96,11 @@ function App() {
         </div>
       </div>
 
-      <div className={`fixed inset-0 w-screen h-screen transition-opacity duration-1200 ease-out ${showContent ? 'opacity-100' : 'opacity-0'
-        }`}>
+      <div
+        className={`fixed inset-0 w-screen h-screen transition-opacity duration-1200 ease-out ${
+          showContent ? "opacity-100" : "opacity-0"
+        }`}
+      >
         <Silk
           speed={5}
           scale={1}
@@ -105,4 +113,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

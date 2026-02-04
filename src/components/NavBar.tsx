@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AnimatedGradientText from "./AnimatedGradientText";
-import DarkModeToggle from './DarkModeToggle';
+import DarkModeToggle from "./DarkModeToggle";
 import TextType from "./Reactbits/TextType";
 
 export default function Navbar() {
@@ -11,7 +11,7 @@ export default function Navbar() {
     <div className="w-full rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md shadow-lg">
       <nav className="w-full px-4 py-4 flex items-center justify-between">
         <div className="text-xl font-bold flex gap-2">
-          <TextType 
+          <TextType
             text={["Mison Caamwang"]}
             typingSpeed={30}
             pauseDuration={1500}
@@ -38,16 +38,19 @@ export default function Navbar() {
             onClick={() => setOpenHamburger(!openHamburger)}
           >
             <span
-              className={`h-0.5 w-6 bg-current transition-all duration-300 ${openHamburger ? "rotate-45 translate-y-1.5" : ""
-                }`}
+              className={`h-0.5 w-6 bg-current transition-all duration-300 ${
+                openHamburger ? "rotate-45 translate-y-1.5" : ""
+              }`}
             ></span>
             <span
-              className={`h-0.5 w-6 bg-current transition-all duration-300 ${openHamburger ? "opacity-0" : ""
-                }`}
+              className={`h-0.5 w-6 bg-current transition-all duration-300 ${
+                openHamburger ? "opacity-0" : ""
+              }`}
             ></span>
             <span
-              className={`h-0.5 w-6 bg-current transition-all duration-300 ${openHamburger ? "-rotate-45 -translate-y-1.5" : ""
-                }`}
+              className={`h-0.5 w-6 bg-current transition-all duration-300 ${
+                openHamburger ? "-rotate-45 -translate-y-1.5" : ""
+              }`}
             ></span>
           </button>
         </div>
@@ -61,14 +64,14 @@ export default function Navbar() {
   `}
       >
         <div className="px-4 py-3 flex gap-6 justify-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="px-4 py-2 rounded-full transition-all duration-200 hover:opacity-80 active:bg-white/20 active:scale-95 cursor-pointer"
           >
             Projects
           </Link>
-          <Link 
-            to="/blog" 
+          <Link
+            to="/blog"
             className="px-4 py-2 rounded-full transition-all duration-200 hover:opacity-80 active:bg-white/20 active:scale-95 cursor-pointer"
           >
             Blog

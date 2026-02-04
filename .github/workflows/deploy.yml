@@ -37,7 +37,7 @@ jobs:
           VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
 
       - name: Add CNAME file
-        run: echo "misoncaamwang.com" > dist/CNAME 
+        run: echo "misoncaamwang.com" > dist/CNAME
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

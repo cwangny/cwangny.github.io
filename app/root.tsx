@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Outlet } from 'react-router';
-import Navbar from '../src/components/NavBar'
-import LightPillar from '../src/components/Reactbits/LightPillar'
-import Silk from '../src/components/Reactbits/Silk';
-import '../src/index.css'
+import { useState, useEffect } from "react";
+import { Outlet } from "react-router";
+import Navbar from "../src/components/NavBar";
+import LightPillar from "../src/components/Reactbits/LightPillar";
+import Silk from "../src/components/Reactbits/Silk";
+import "../src/index.css";
 
 export default function Root() {
   const [isDark, setIsDark] = useState(true);
@@ -12,15 +12,15 @@ export default function Root() {
     const checkDarkMode = () => {
       setIsDark(document.documentElement.classList.contains("dark"));
     };
-    
+
     checkDarkMode();
-    
+
     const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, { 
-      attributes: true, 
-      attributeFilter: ['class'] 
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
     });
-    
+
     return () => observer.disconnect();
   }, []);
 

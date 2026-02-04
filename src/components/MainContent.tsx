@@ -1,33 +1,33 @@
 import TiltedCard from "./Reactbits/TiltedCard";
 import AnimatedGradientText from "./AnimatedGradientText";
 import ShinyText from "./Reactbits/ShinyText";
-import ReactGA from 'react-ga4';
+import ReactGA from "react-ga4";
 
 export default function MainContent() {
   const projects = [
     {
-      name: 'Tellos AI',
-      imageSrc: './images/tellos.webp',
-      url: 'https://iamtellos.com'
+      name: "Tellos AI",
+      imageSrc: "./images/tellos.webp",
+      url: "https://iamtellos.com",
     },
     {
       name: "Deutsch's Academy",
-      imageSrc: './images/dd-assistant.webp',
-      url: 'https://dd-assistant-client.web.app/'
-    }
+      imageSrc: "./images/dd-assistant.webp",
+      url: "https://dd-assistant-client.web.app/",
+    },
   ];
 
   const handleProjectClick = (projectName: string, url: string) => {
     // Track the click event
     if (import.meta.env.VITE_GA_MEASUREMENT_ID && import.meta.env.PROD) {
       ReactGA.event({
-        category: 'User Interaction',
-        action: 'Click',
-        label: `${projectName} Button`
+        category: "User Interaction",
+        action: "Click",
+        label: `${projectName} Button`,
       });
     }
-    
-    window.open(url, '_blank');
+
+    window.open(url, "_blank");
   };
 
   return (
@@ -51,7 +51,9 @@ export default function MainContent() {
             className="w-full"
             overlayContent={
               <div className="text-white">
-                <AnimatedGradientText colors={['#40ffaa', '#4079ff', '#40ffaa']}>
+                <AnimatedGradientText
+                  colors={["#40ffaa", "#4079ff", "#40ffaa"]}
+                >
                   {project.name}
                 </AnimatedGradientText>
               </div>
@@ -61,7 +63,7 @@ export default function MainContent() {
         ))}
       </div>
 
-      <ShinyText 
+      <ShinyText
         text="More coming soon..."
         disabled={false}
         speed={3}
